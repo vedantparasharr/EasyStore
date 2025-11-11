@@ -30,9 +30,9 @@ export function HomePage() {
 
     useEffect(() => {
         async function fetchProducts() {
-            const productsData = await axios.get('http://localhost:3000/api/products');
+            const productsData = await axios.get('/api/products');
             setProducts(productsData.data);
-            const cartData = await axios.get('http://localhost:3000/api/cart-items');
+            const cartData = await axios.get('/api/cart-items');
             setCart(cartData.data);
             console.log(cartData.data)
         }
