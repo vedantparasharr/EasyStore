@@ -23,18 +23,14 @@ function ProductsGrid({products}) {
 
 
 
-export function HomePage() {
+export function HomePage({cart}) {
 
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         async function fetchProducts() {
             const productsData = await axios.get('/api/products');
             setProducts(productsData.data);
-            const cartData = await axios.get('/api/cart-items');
-            setCart(cartData.data);
-            console.log(cartData.data)
         }
         fetchProducts();
     }, [])
