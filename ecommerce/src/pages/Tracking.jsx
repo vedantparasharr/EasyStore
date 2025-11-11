@@ -1,6 +1,6 @@
-import { Header } from '../components/header'
+import { Header } from '../components/Header'
 import { Link } from 'react-router'
-import './tracking.css'
+import './Tracking.css'
 export function Tracking() {
     return (
         <>

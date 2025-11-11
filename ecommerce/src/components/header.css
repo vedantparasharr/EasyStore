@@ -47,6 +47,10 @@
   display: none;
 }
 
+.orders-link.active {
+  text-decoration: underline;
+}
+
 @media (max-width: 675px) {
   .header .logo {
     display: none;
