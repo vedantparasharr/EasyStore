@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const cartData = await axios.get('/api/cart-items');
+      const cartData = await axios.get('/api/cart-items?expand=product');
       setCart(cartData.data);
     }
     fetchProducts();
