@@ -1,4 +1,4 @@
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
 
 export function DeliveryOptions({deliveryOptions, productId, deliveryOptionId}) {

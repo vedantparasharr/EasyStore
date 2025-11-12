@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 
 export function PaymentSummary() {
 

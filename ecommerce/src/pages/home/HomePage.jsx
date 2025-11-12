@@ -1,27 +1,9 @@
 import axios from 'axios'
-import { Header } from '../components/Header'
+import { Header } from '../../components/Header'
 import { Product } from './Product'
 import './HomePage.css'
 import { useEffect, useState } from 'react'
-
-
-
-function ProductsGrid({products}) {
-
-    return products.map((product) => (
-        <Product
-            key={product.id}
-            id={product.id}
-            image={product.image}
-            name={product.name}
-            ratingStars={product.rating.stars}
-            ratingCount={product.rating.count}
-            priceCents={product.priceCents}
-        />
-    ))
-}
-
-
+import { ProductsGrid  } from "./ProductsGrid";
 
 export function HomePage({cart}) {
 
