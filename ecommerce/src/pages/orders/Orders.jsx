@@ -7,10 +7,8 @@ export function Orders({cart}) {
         <>
             <title>Orders</title>
             <Header cart={cart}/>
-
             <div className="orders-page">
                 <div className="page-title">Your Orders</div>
-
                 <div className="orders-grid">
                     <OrdersGrid/>
                 </div>

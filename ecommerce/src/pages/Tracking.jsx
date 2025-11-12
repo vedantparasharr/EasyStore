@@ -1,11 +1,36 @@
-import { Header } from '../components/Header'
-import { Link } from 'react-router'
-import './Tracking.css'
-export function Tracking() {
-    return (
+import { Header } from '../components/Header';
+import { Link, useParams } from 'react-router-dom'; // ✅ Correct
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './Tracking.css';
+import dayjs from 'dayjs';
+
+export function Tracking({ cart }) {
+
+    const { orderId, productId } = useParams();
+
+    const [order, setOrder] = useState(null)
+    const [product, setProduct] = useState(null);
+
+
+
+    useEffect(() => {
+        async function fetchProduct() {
+            const response = await axios.get(`/api/orders/${orderId}?expand=products`)
+            const orderData = response.data;
+            setOrder(orderData);
+            const foundProduct = orderData.products.find((p) => p.productId === productId);
+            setProduct(foundProduct);
+            console.log(foundProduct)
+        }
+        fetchProduct();
+
+    }, [orderId, productId])
+
+    return product && order && (
         <>
             <title>Tracking</title>
-            <Header/>
+            <Header cart={cart} />
 
             <div className="tracking-page">
                 <div className="order-tracking">
@@ -14,18 +39,18 @@ export function Tracking() {
                     </Link>
 
                     <div className="delivery-date">
-                        Arriving on Monday, June 13
+                        Arriving on {dayjs(product.estimatedDeliveryTimeMs).format('dddd, MMMM DD')}
                     </div>
 
                     <div className="product-info">
-                        Black and Gray Athletic Cotton Socks - 6 Pairs
+                        {product.product.name}
                     </div>
 
                     <div className="product-info">
-                        Quantity: 1
+                        Quantity: {product.quantity}
                     </div>
 
-                    <img className="product-image" src="images/products/athletic-cotton-socks-6-pairs.jpg" />
+                    <img className="product-image" src={product.product.image} />
 
                     <div className="progress-labels-container">
                         <div className="progress-label">
