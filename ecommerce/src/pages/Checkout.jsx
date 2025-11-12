@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
+import { CartItem } from './CartItem'
 import './Checkout-header.css'
 import './Checkout.css'
-import { CartItem } from './CartItem'
 
 export function CartItemsGrid({ cart }) {
   return cart.map((item) => {
@@ -19,7 +19,6 @@ export function CartItemsGrid({ cart }) {
 }
 
 export function Checkout({ cart }) {
-  console.log(cart)
   return (
     <>
       <title>Checkout</title>
