@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { formatMoney } from "../utils/money";
+import { DeliveryOptions } from './DeliveryOptions';
 import dayjs from 'dayjs';
 import axios from 'axios';
 
@@ -20,35 +21,6 @@ export function CartItem({ item, id, productId, quantity, deliveryOptionId }) {
         .find((deliveryOption) => {
             return deliveryOption.id === deliveryOptionId;
         })
-
-    function DeliveryOptions() {
-
-        return deliveryOptions.map((deliveryOption) => {
-
-            let priceString = 'FREE Shipping';
-            if (deliveryOption.priceCents > 0) {
-                priceString = `${formatMoney(deliveryOption.priceCents)} - Shipping `;
-            }
-
-            return (
-                <div key={deliveryOption.id} className="delivery-option">
-                    <input type="radio" checked={deliveryOption.id === deliveryOptionId}
-                        className="delivery-option-input"
-                        name={`delivery-option-${productId}`} />
-                    <div>
-                        <div className="delivery-option-date">
-                            {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
-                        </div>
-
-                        <div className="delivery-option-price">
-                            {priceString}
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-        )
-    }
 
     return (
 
@@ -87,7 +59,7 @@ export function CartItem({ item, id, productId, quantity, deliveryOptionId }) {
                             <div className="delivery-options-title">
                                 Choose a delivery option:
                             </div>
-                            <DeliveryOptions />
+                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} />
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { CartItem } from './CartItem'
 import './Checkout-header.css'
 import './Checkout.css'
+import { getCartQuantity } from '../utils/cartQuantity';
+import { PaymentSummary } from './PaymentSummary';
 
 export function CartItemsGrid({ cart }) {
   return cart.map((item) => {
@@ -33,7 +35,7 @@ export function Checkout({ cart }) {
 
           <div className="checkout-header-middle-section">
             Checkout (<Link className="return-to-home-link"
-              to="/">3 items</Link>)
+              to="/">{getCartQuantity(cart)} items</Link>)
           </div>
 
           <div className="checkout-header-right-section">
@@ -49,40 +51,9 @@ export function Checkout({ cart }) {
           <div className="order-summary">
             <CartItemsGrid cart={cart} />
           </div>
-
+  
           <div className="payment-summary">
-            <div className="payment-summary-title">
-              Payment Summary
-            </div>
-
-            <div className="payment-summary-row">
-              <div>Items (3):</div>
-              <div className="payment-summary-money">$42.75</div>
-            </div>
-
-            <div className="payment-summary-row">
-              <div>Shipping &amp; handling:</div>
-              <div className="payment-summary-money">$4.99</div>
-            </div>
-
-            <div className="payment-summary-row subtotal-row">
-              <div>Total before tax:</div>
-              <div className="payment-summary-money">$47.74</div>
-            </div>
-
-            <div className="payment-summary-row">
-              <div>Estimated tax (10%):</div>
-              <div className="payment-summary-money">$4.77</div>
-            </div>
-
-            <div className="payment-summary-row total-row">
-              <div>Order total:</div>
-              <div className="payment-summary-money">$52.51</div>
-            </div>
-
-            <button className="place-order-button button-primary">
-              Place your order
-            </button>
+              <PaymentSummary/>
           </div>
         </div>
       </div>

@@ -1,12 +1,11 @@
 import './Header.css'
+import { getCartQuantity } from '../utils/cartQuantity';
 import { NavLink } from 'react-router-dom'
 
 export function Header({cart}) {
 
-    let cartQuantity = 0;
-    cart.forEach((item) => {
-        cartQuantity+=item.quantity;
-    })
+    let cartQuantity = getCartQuantity(cart);
+    
 
     return (
         <>
