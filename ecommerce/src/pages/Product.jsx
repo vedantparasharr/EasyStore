@@ -2,8 +2,6 @@ import { formatMoney } from "../utils/money";
 
 export function Product({ id, image, name, ratingStars, ratingCount, priceCents}) {
 
-    const priceDollars = (priceCents / 100).toFixed(2);
-
     return (
         <>
             <div className="product-container" data-id={id}>
