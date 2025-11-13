@@ -6,7 +6,7 @@ import { OrderDetailsGrid } from './OrderDetailsGrid';
 
 
 
-export function OrdersGrid() {
+export function OrdersGrid({loadCart}) {
 
     const [orders, setOrders] = useState([]);
 
@@ -40,7 +40,7 @@ export function OrdersGrid() {
                     </div>
                 </div>
 
-                <OrderDetailsGrid order={order}/>
+                <OrderDetailsGrid order={order} loadCart={loadCart}/>
                 
             </div>
         )

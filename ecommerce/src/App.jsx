@@ -11,7 +11,7 @@ import axios from 'axios';
 function App() {
 
   const [cart, setCart] = useState([]);
-
+  window.axios = axios;
   const loadCart = async function fetchProducts() {
       const cartData = await axios.get('/api/cart-items?expand=product');
       setCart(cartData.data);
@@ -25,7 +25,7 @@ function App() {
     <Routes>
       <Route index element={<HomePage cart={cart} loadCart={loadCart} />}></Route>
       <Route path='/checkout' element={<Checkout cart={cart} loadCart={loadCart} />} />
-      <Route path='/orders' element={<Orders cart={cart}/>} />
+      <Route path='/orders' element={<Orders cart={cart} loadCart={loadCart}/>} />
       <Route path='/tracking/:orderId/:productId' element={<Tracking cart={cart} />} />
       <Route path='*' element={<Error />} ></Route>
     </Routes>
