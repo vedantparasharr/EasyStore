@@ -3,13 +3,13 @@ import { PaymentSummary } from './PaymentSummary';
 import { CartItemsGrid } from './CartItemsGrid'
 import { CheckoutHeader } from './CheckoutHeader';
 
-
 export function Checkout({ cart, loadCart }) {
+
   return (
     <>
       <title>Checkout</title>
 
-      <CheckoutHeader cart={cart}/>
+      <CheckoutHeader cart={cart} />
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
@@ -18,9 +18,9 @@ export function Checkout({ cart, loadCart }) {
           <div className="order-summary">
             <CartItemsGrid cart={cart} loadCart={loadCart} />
           </div>
-  
+
           <div className="payment-summary">
-              <PaymentSummary/>
+            <PaymentSummary cart={cart} />
           </div>
         </div>
       </div>

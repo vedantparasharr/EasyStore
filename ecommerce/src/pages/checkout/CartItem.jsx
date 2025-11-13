@@ -4,7 +4,7 @@ import { DeliveryOptions } from './DeliveryOptions';
 import dayjs from 'dayjs';
 import axios from 'axios';
 
-export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart }) {
+export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart}) {
 
     const [deliveryOptions, setDeliveryOptions] = useState([]);
 
@@ -66,7 +66,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                             <div className="delivery-options-title">
                                 Choose a delivery option:
                             </div>
-                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} />
+                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} loadCart = {loadCart}/>
                         </div>
                     </div>
                 </div>

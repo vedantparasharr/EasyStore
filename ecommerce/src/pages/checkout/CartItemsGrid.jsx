@@ -1,6 +1,5 @@
 import { CartItem } from './CartItem'
 
-
 export function CartItemsGrid({ cart, loadCart }) {
   return cart.map((item) => {
     return (

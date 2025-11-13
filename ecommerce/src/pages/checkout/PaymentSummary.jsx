@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { formatMoney } from "../../utils/money";
 
-export function PaymentSummary() {
+export function PaymentSummary({ cart }) {
 
     const [paymentSummary, setPaymentSummary] = useState(null);
     useEffect(() => {
@@ -11,7 +11,7 @@ export function PaymentSummary() {
             setPaymentSummary(response.data)
         }
         fetchPaymentSummary();
-    }, [])
+    }, [cart])
 
     return paymentSummary && (
         <>
