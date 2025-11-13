@@ -1,6 +1,6 @@
 import { Product } from "./Product"
 
-export function ProductsGrid({products}) {
+export function ProductsGrid({products, loadCart}) {
 
     return products.map((product) => (
         <Product
@@ -11,6 +11,7 @@ export function ProductsGrid({products}) {
             ratingStars={product.rating.stars}
             ratingCount={product.rating.count}
             priceCents={product.priceCents}
+            loadCart={loadCart}
         />
     ))
 }
