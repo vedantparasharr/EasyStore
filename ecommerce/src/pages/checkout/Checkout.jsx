@@ -4,7 +4,7 @@ import { CartItemsGrid } from './CartItemsGrid'
 import { CheckoutHeader } from './CheckoutHeader';
 
 
-export function Checkout({ cart }) {
+export function Checkout({ cart, loadCart }) {
   return (
     <>
       <title>Checkout</title>
@@ -16,7 +16,7 @@ export function Checkout({ cart }) {
 
         <div className="checkout-grid">
           <div className="order-summary">
-            <CartItemsGrid cart={cart} />
+            <CartItemsGrid cart={cart} loadCart={loadCart} />
           </div>
   
           <div className="payment-summary">

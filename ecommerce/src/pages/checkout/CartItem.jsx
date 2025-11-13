@@ -4,10 +4,17 @@ import { DeliveryOptions } from './DeliveryOptions';
 import dayjs from 'dayjs';
 import axios from 'axios';
 
-export function CartItem({ item, id, productId, quantity, deliveryOptionId }) {
+export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart }) {
 
     const [deliveryOptions, setDeliveryOptions] = useState([]);
 
+    const deleteProduct = async () => {
+        await axios.delete(`/api/cart-items/${productId}`, {
+            productId: productId,
+            quantity
+        })
+        loadCart();
+    }
 
     useEffect(() => {
         async function getDeliveryOptions() {
@@ -49,7 +56,7 @@ export function CartItem({ item, id, productId, quantity, deliveryOptionId }) {
                                 <span className="update-quantity-link link-primary">
                                     Update
                                 </span>
-                                <span className="delete-quantity-link link-primary">
+                                <span className="delete-quantity-link link-primary" onClick={deleteProduct} >
                                     Delete
                                 </span>
                             </div>

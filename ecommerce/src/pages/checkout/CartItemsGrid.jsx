@@ -1,7 +1,7 @@
 import { CartItem } from './CartItem'
 
 
-export function CartItemsGrid({ cart }) {
+export function CartItemsGrid({ cart, loadCart }) {
   return cart.map((item) => {
     return (
       <CartItem
@@ -11,6 +11,7 @@ export function CartItemsGrid({ cart }) {
         productId={item.productId}
         quantity={item.quantity}
         deliveryOptionId={item.deliveryOptionId}
+        loadCart={loadCart}
       />
     );
   });
