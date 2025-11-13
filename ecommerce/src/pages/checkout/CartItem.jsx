@@ -4,9 +4,22 @@ import { DeliveryOptions } from './DeliveryOptions';
 import dayjs from 'dayjs';
 import axios from 'axios';
 
-export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart}) {
+export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart }) {
 
     const [deliveryOptions, setDeliveryOptions] = useState([]);
+    const [editing, setEditing] = useState(false);
+    const [newQuantity, setNewQuantity] = useState(quantity);
+
+
+    const updateQuantity = async () => {
+        await axios.put(`/api/cart-items/${productId}`, {
+            quantity: newQuantity
+        });
+
+        setEditing(false);
+        loadCart();
+    };
+
 
     const deleteProduct = async () => {
         await axios.delete(`/api/cart-items/${productId}`, {
@@ -50,13 +63,53 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                                 {formatMoney(item.product.priceCents)}
                             </div>
                             <div className="product-quantity">
-                                <span>
-                                    Quantity: <span className="quantity-label">{quantity}</span>
-                                </span>
-                                <span className="update-quantity-link link-primary">
-                                    Update
-                                </span>
-                                <span className="delete-quantity-link link-primary" onClick={deleteProduct} >
+                                {!editing && (
+                                    <>
+                                        <span>
+                                            Quantity: <span className="quantity-label">{quantity}</span>
+                                        </span>
+
+                                        <span
+                                            className="update-quantity-link link-primary"
+                                            onClick={() => setEditing(true)}
+                                        >
+                                            Update
+                                        </span>
+                                    </>
+                                )}
+
+                                {editing && (
+                                    <span className="update-quantity-edit">
+                                        <input
+                                            type="number"
+                                            min="1"
+                                            value={newQuantity}
+                                            onChange={(e) => setNewQuantity(Number(e.target.value))}
+                                            style={{ width: "50px", padding: "4px" }}
+
+                                        />
+
+                                        <span
+                                            className="save-quantity-link link-primary"
+                                            onClick={updateQuantity}
+                                        >
+                                            Save
+                                        </span>
+
+                                        <span
+                                            className="cancel-quantity-link link-primary"
+                                            onClick={() => setEditing(false)}
+                                            style={{ marginRight: '4px' }}
+                                        >
+                                            Cancel
+                                        </span>
+                                    </span>
+                                )}
+
+                                <span
+                                    className="delete-quantity-link link-primary"
+                                    onClick={deleteProduct}
+                                >
                                     Delete
                                 </span>
                             </div>
@@ -66,7 +119,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                             <div className="delivery-options-title">
                                 Choose a delivery option:
                             </div>
-                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} loadCart = {loadCart}/>
+                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} loadCart={loadCart} />
                         </div>
                     </div>
                 </div>
