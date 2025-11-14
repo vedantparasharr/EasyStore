@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { formatMoney } from "../../utils/money";
 
-const API_URL = "https://easycart-u08y.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export function Product({ id, image, name, ratingStars, ratingCount, priceCents, loadCart }) {
 

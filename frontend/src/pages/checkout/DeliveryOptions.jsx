@@ -2,17 +2,18 @@ import { formatMoney } from "../../utils/money";
 import axios from "axios";
 import dayjs from "dayjs";
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 export function DeliveryOptions({ deliveryOptions, productId, deliveryOptionId, loadCart }) {
 
     return deliveryOptions.map((deliveryOption) => {
 
         const updateDeliveryOption = async () => {
-            await axios.put(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
+            await axios.put(`${API_URL}/api/cart-items/${productId}`, {
                 deliveryOptionId: deliveryOption.id
             });
             loadCart();
-        }
+        };
 
         let priceString = 'FREE Shipping';
         if (deliveryOption.priceCents > 0) {
@@ -20,12 +21,19 @@ export function DeliveryOptions({ deliveryOptions, productId, deliveryOptionId, 
         }
 
         return (
-            <div key={deliveryOption.id} className="delivery-option" onClick={updateDeliveryOption}>
-                <input type="radio"
+            <div 
+                key={deliveryOption.id} 
+                className="delivery-option" 
+                onClick={updateDeliveryOption}
+            >
+                <input 
+                    type="radio"
                     checked={deliveryOption.id === deliveryOptionId}
-                    onChange={() => { }}
+                    onChange={() => {}}
                     className="delivery-option-input"
-                    name={`delivery-option-${productId}`} />
+                    name={`delivery-option-${productId}`} 
+                />
+
                 <div>
                     <div className="delivery-option-date">
                         {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
@@ -36,7 +44,6 @@ export function DeliveryOptions({ deliveryOptions, productId, deliveryOptionId, 
                     </div>
                 </div>
             </div>
-        )
-    }
-    )
+        );
+    });
 }

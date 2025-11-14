@@ -1,7 +1,6 @@
 import './Header.css'
 import { getCartQuantity } from '../utils/cartQuantity';
 import { NavLink, useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
 
 export function Header({ cart }) {
@@ -17,9 +16,9 @@ export function Header({ cart }) {
                 <div className="left-section">
                     <NavLink to="/" className="header-link">
                         <img className="logo"
-                            src="public/images/logo-white.png" />
+                            src="/images/logo-white.png" />
                         <img className="mobile-logo"
-                            src="public/images/mobile-logo-white.png" />
+                            src="/images/mobile-logo-white.png" />
                     </NavLink>
                 </div>
 
@@ -37,20 +36,23 @@ export function Header({ cart }) {
                         }}
                     />
 
-
-                    <button className="search-button" onClick={() => searchInput &&  navigate(`/search/${searchInput}`)}
+                    <button
+                        className="search-button"
+                        onClick={() => searchInput && navigate(`/search/${searchInput}`)}
                     >
-                        <img className="search-icon" src="images/icons/search-icon.png" />
+                        <img className="search-icon" src="/images/icons/search-icon.png" />
                     </button>
                 </div>
 
                 <div className="right-section">
-                    <NavLink className={({ isActive }) => `orders-link header-link${isActive ? ' active' : ''}`} to="/orders">
+                    <NavLink className={({ isActive }) =>
+                        `orders-link header-link${isActive ? ' active' : ''}`
+                    } to="/orders">
                         <span className="orders-text">Orders</span>
                     </NavLink>
 
                     <NavLink className="cart-link header-link" to="/checkout">
-                        <img className="cart-icon" src="images/icons/cart-icon.png" />
+                        <img className="cart-icon" src="/images/icons/cart-icon.png" />
                         <div className="cart-quantity">{cartQuantity}</div>
                         <div className="cart-text">Cart</div>
                     </NavLink>

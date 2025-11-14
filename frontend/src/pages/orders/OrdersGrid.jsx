@@ -1,23 +1,23 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
-import {formatMoney} from '../../utils/money'
-import { useEffect, useState } from 'react'
+import { formatMoney } from '../../utils/money';
+import { useEffect, useState } from 'react';
 import { OrderDetailsGrid } from './OrderDetailsGrid';
 
+const API_URL = import.meta.env.VITE_API_URL;
 
-
-export function OrdersGrid({loadCart}) {
+export function OrdersGrid({ loadCart }) {
 
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         async function fetchOrders() {
-            const response = await axios.get('https://easycart-u08y.onrender.com/api/orders?expand=products')
-            setOrders(response.data)
-            console.log(response)
+            const response = await axios.get(`${API_URL}/api/orders?expand=products`);
+            setOrders(response.data);
+            console.log(response);
         }
-        fetchOrders()
-    }, [])
+        fetchOrders();
+    }, []);
 
     return orders && orders.map((order) => {
         return (
@@ -40,9 +40,8 @@ export function OrdersGrid({loadCart}) {
                     </div>
                 </div>
 
-                <OrderDetailsGrid order={order} loadCart={loadCart}/>
-                
+                <OrderDetailsGrid order={order} loadCart={loadCart} />
             </div>
-        )
-    })
+        );
+    });
 }

@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { formatMoney } from "../../utils/money";
 import { DeliveryOptions } from './DeliveryOptions';
 import dayjs from 'dayjs';
 import axios from 'axios';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart }) {
 
@@ -10,9 +12,8 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
     const [editing, setEditing] = useState(false);
     const [newQuantity, setNewQuantity] = useState(quantity);
 
-
     const updateQuantity = async () => {
-        await axios.put(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
+        await axios.put(`${API_URL}/api/cart-items/${productId}`, {
             quantity: newQuantity
         });
 
@@ -20,53 +21,56 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
         loadCart();
     };
 
-
     const deleteProduct = async () => {
-        await axios.delete(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
+        await axios.delete(`${API_URL}/api/cart-items/${productId}`, {
             productId: productId,
             quantity
-        })
+        });
         loadCart();
-    }
+    };
 
     useEffect(() => {
         async function getDeliveryOptions() {
-            const response = await axios.get('https://easycart-u08y.onrender.com/api/delivery-options?expand=estimatedDeliveryTime');
-            setDeliveryOptions(response.data)
+            const response = await axios.get(`${API_URL}/api/delivery-options?expand=estimatedDeliveryTime`);
+            setDeliveryOptions(response.data);
         }
         getDeliveryOptions();
     }, []);
 
-    const selectedDeliveryOption = deliveryOptions
-        .find((deliveryOption) => {
-            return deliveryOption.id === deliveryOptionId;
-        })
+    const selectedDeliveryOption = deliveryOptions.find(
+        (deliveryOption) => deliveryOption.id === deliveryOptionId
+    );
 
     return (
-
         <>
             {deliveryOptions.length > 0 && selectedDeliveryOption && (
                 <div className="cart-item-container">
                     <div className="delivery-date">
-                        Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
+                        Delivery date:{' '}
+                        {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                     </div>
 
                     <div className="cart-item-details-grid">
-                        <img className="product-image"
-                            src={`${item.product.image}`} />
+                        <img
+                            className="product-image"
+                            src={`${API_URL}/${item.product.image}`}
+                        />
 
                         <div className="cart-item-details">
                             <div className="product-name">
                                 {item.product.name}
                             </div>
+
                             <div className="product-price">
                                 {formatMoney(item.product.priceCents)}
                             </div>
+
                             <div className="product-quantity">
                                 {!editing && (
                                     <>
                                         <span>
-                                            Quantity: <span className="quantity-label">{quantity}</span>
+                                            Quantity:{' '}
+                                            <span className="quantity-label">{quantity}</span>
                                         </span>
 
                                         <span
@@ -86,7 +90,6 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                                             value={newQuantity}
                                             onChange={(e) => setNewQuantity(Number(e.target.value))}
                                             style={{ width: "50px", padding: "4px" }}
-
                                         />
 
                                         <span
@@ -119,13 +122,16 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                             <div className="delivery-options-title">
                                 Choose a delivery option:
                             </div>
-                            <DeliveryOptions deliveryOptions={deliveryOptions} productId={productId} deliveryOptionId={deliveryOptionId} loadCart={loadCart} />
+                            <DeliveryOptions
+                                deliveryOptions={deliveryOptions}
+                                productId={productId}
+                                deliveryOptionId={deliveryOptionId}
+                                loadCart={loadCart}
+                            />
                         </div>
                     </div>
                 </div>
             )}
-
         </>
-    )
-
+    );
 }
