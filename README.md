@@ -55,19 +55,19 @@ A complete full-stack ecommerce application built with React, Node.js, Express, 
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Home Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/main/frontend/public/screenshots/s1.png" width="700" alt="Home Page" />
+<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s1.png" width="700" />
 
 ### Checkout Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/main/frontend/public/screenshots/s2.png" width="700" alt="Checkout Page" />
+<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s2.png" width="700" />
 
 ### Orders Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/main/frontend/public/screenshots/s3.png" width="700" alt="Orders Page" />
+<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s3.png" width="700" />
 
 ### Tracking Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/main/frontend/public/screenshots/s4.png" width="700" alt="Tracking Page" />
+<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s4.png" width="700" />
 
 ---
 
