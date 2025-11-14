@@ -1,8 +1,8 @@
-# EasyCart 🛒
+# EasyStore 🛒
 
 A complete full-stack ecommerce application built with React, Node.js, Express, Sequelize, and PostgreSQL. Features real-time cart management, delivery options, order creation, and live order tracking.
 
-![EasyCart Banner](https://img.shields.io/badge/Status-Live-success) ![License](https://img.shields.io/badge/License-MIT-blue) ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react) ![Node](https://img.shields.io/badge/Node.js-16+-339933?logo=node.js)
+![EasyStore Banner](https://img.shields.io/badge/Status-Live-success) ![License](https://img.shields.io/badge/License-MIT-blue) ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react) ![Node](https://img.shields.io/badge/Node.js-16+-339933?logo=node.js)
 
 ---
 
