@@ -58,16 +58,16 @@ A complete full-stack ecommerce application built with React, Node.js, Express, 
 ## Screenshots
 
 ### Home Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s1.png" width="700" />
+<img src="https://easycartreact.vercel.app/screenshots/s1.png" width="700" />
 
 ### Checkout Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s2.png" width="700" />
+<img src="https://easycartreact.vercel.app/screenshots/s2.png" width="700" />
 
 ### Orders Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s3.png" width="700" />
+<img src="https://easycartreact.vercel.app/screenshots/s3.png" width="700" />
 
 ### Tracking Page
-<img src="https://raw.githubusercontent.com/vedantparasharr/EasyCart/master/frontend/public/screenshots/s4.png" width="700" />
+<img src="https://easycartreact.vercel.app/screenshots/s4.png" width="700" />
 
 ---
 
