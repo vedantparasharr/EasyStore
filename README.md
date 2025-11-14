@@ -1,67 +1,194 @@
-# EasyCart
+# EasyCart 🛒
 
-A modern, full-featured e-commerce web application built with React to demonstrate real-world shopping cart functionality and order management.
+A complete full-stack ecommerce application built with React, Node.js, Express, Sequelize, and PostgreSQL. Features real-time cart management, delivery options, order creation, and live order tracking.
 
-## Overview
-
-EasyCart is a learning project that implements a complete online shopping experience, from browsing products to tracking deliveries. The application showcases modern React patterns, API integration, and responsive design principles.
-
-## Features
-
-- **Product Browsing**: Browse and search through a catalog of products with ratings and prices
-- **Shopping Cart**: Add items to cart with customizable quantities
-- **Checkout Process**: Review orders with multiple delivery options and cost breakdown
-- **Order Management**: View order history and track deliveries in real-time
-- **Delivery Tracking**: Visual progress bar showing estimated delivery status
-- **Responsive Design**: Mobile-friendly interface that works across all devices
-
-## Tech Stack
-
-- **Frontend**: React 18 with React Router
-- **HTTP Client**: Axios for API requests
-- **Date Handling**: Day.js for time calculations and formatting
-- **Styling**: Custom CSS with responsive layouts
-
-## Key Learning Concepts
-
-This project demonstrates:
-- React Hooks (useState, useEffect)
-- Component composition and props management
-- Client-side routing with React Router
-- API integration and state management
-- Form handling and user interactions
-- Conditional rendering and dynamic UI updates
-- Real-time data calculations (delivery progress)
-
-## Project Structure
-
-- **Pages**: Home, Checkout, Orders, Tracking
-- **Components**: Reusable UI elements (Header, Product cards, Cart items)
-- **Utils**: Helper functions for formatting and calculations
-- **Routing**: Dynamic routes with URL parameters
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start the development server: `npm run dev`
-4. Open your browser to the local development URL
-
-## API Integration
-
-The application connects to a backend API for:
-- Product catalog management
-- Cart operations (add, update, delete)
-- Order creation and retrieval
-- Delivery options and tracking
-
-## Contact
-
-**Vedant Parashar**
-- Email: iemvedant@gmail.com
-- GitHub: [@vedantparasharr](https://github.com/vedantparasharr)
-- LinkedIn: [vedantparasharr](https://linkedin.com/in/vedantparasharr)
+![EasyCart Banner](https://img.shields.io/badge/Status-Live-success) ![License](https://img.shields.io/badge/License-MIT-blue) ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react) ![Node](https://img.shields.io/badge/Node.js-16+-339933?logo=node.js)
 
 ---
 
-*Built as a learning project to master React fundamentals and modern web development practices.*
+## 🌐 Live Demo
+
+- **Frontend:** [https://easycartreact.vercel.app](https://easycartreact.vercel.app)
+- **Backend API:** [https://easycart-u08y.onrender.com/api/products](https://easycart-u08y.onrender.com/api/products)
+
+---
+
+## 👨‍💻 Author
+
+**Vedant Parashar**
+
+- GitHub: [@vedantparasharr](https://github.com/vedantparasharr)
+- LinkedIn: [vedantparasharr](https://www.linkedin.com/in/vedantparasharr)
+- Email: iemavedant@gmail.com
+
+---
+
+## ✨ Features
+
+- 🏠 **Home page** with complete product catalog
+- 🛒 **Cart management** - add items, update quantities, remove products
+- 🚚 **Multiple delivery options** for flexible shipping
+- 💳 **Checkout page** with complete order summary
+- 📦 **Order generation** and confirmation
+- 📋 **Orders page** to view past purchases
+- 📍 **Live delivery tracking** with animated progress bar
+- 📱 **Fully responsive** mobile design
+- 🗄️ **Real backend** with PostgreSQL database
+- ☁️ **Production ready** and fully deployed
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React** - UI library
+- **React Router** - Client-side routing
+- **Axios** - HTTP requests
+- **Vercel** - Deployment platform
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express** - Web framework
+- **Sequelize ORM** - Database management
+- **PostgreSQL** - Relational database (hosted on Render)
+- **Render** - Backend deployment
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+<img src="/screenshots/s1.png" width="700" alt="Home Page" />
+
+### Checkout Page
+<img src="/screenshots/s2.png" width="700" alt="Checkout Page" />
+
+### Orders Page
+<img src="/screenshots/s3.png" width="700" alt="Orders Page" />
+
+### Tracking Page
+<img src="/screenshots/s4.png" width="700" alt="Tracking Page" />
+
+---
+
+## 📁 Project Structure
+
+```
+EasyCart/
+├── backend/          # Express API & database logic
+└── frontend/         # React application
+```
+
+---
+
+## 🚀 Run Locally
+
+### Prerequisites
+- Node.js (v16+)
+- PostgreSQL
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/vedantparasharr/EasyCart.git
+cd EasyCart
+```
+
+---
+
+### 2. Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the `backend` directory:
+
+```env
+DB_TYPE=postgres
+RDS_HOSTNAME=your_render_hostname
+RDS_USERNAME=your_username
+RDS_PASSWORD=your_password
+RDS_DB_NAME=your_db_name
+RDS_PORT=5432
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Backend will run on `http://localhost:5000`
+
+---
+
+### 3. Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+Create a `.env` file in the `frontend` directory:
+
+```env
+VITE_API_URL=https://easycart-u08y.onrender.com
+```
+
+For local development, use:
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Frontend will run on `http://localhost:5173`
+
+---
+
+## 🌍 Deployment
+
+### Frontend (Vercel)
+
+1. Connect your GitHub repository to Vercel
+2. Select the `frontend` folder as the root directory
+3. Add environment variable: `VITE_API_URL`
+4. Click **Deploy**
+
+### Backend (Render)
+
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set root directory to `backend`
+4. Add all environment variables from `.env`
+5. Set start command: `node server.js`
+6. Click **Deploy**
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/vedantparasharr/EasyCart/issues).
+
+---
+
+## ⭐ Show Your Support
+
+If you like this project, please give it a ⭐ on [GitHub](https://github.com/vedantparasharr/EasyCart)!
+
+---
+
+**Made with ❤️ by Vedant Parashar**
