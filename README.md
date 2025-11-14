@@ -58,7 +58,7 @@ A complete full-stack ecommerce application built with React, Node.js, Express, 
 ## 📸 Screenshots
 
 ### Home Page
-<img src="/screenshots/s1.png" width="700" alt="Home Page" />
+<img src="public/screenshots/s1.png" width="700" alt="Home Page" />
 
 ### Checkout Page
 <img src="/screenshots/s2.png" width="700" alt="Checkout Page" />
