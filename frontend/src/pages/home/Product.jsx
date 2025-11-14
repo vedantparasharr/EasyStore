@@ -9,7 +9,7 @@ export function Product({ id, image, name, ratingStars, ratingCount, priceCents,
 
 
     const addToCart = async () => {
-        await axios.post('/api/cart-items', {
+        await axios.post('https://easycart-u08y.onrender.com/api/cart-items', {
             productId: id,
             quantity
         })

@@ -13,7 +13,7 @@ export function HomePage({ cart, loadCart }) {
     useEffect(() => {
         async function fetchProducts() {
             const query = searchTerm ? `?search=${searchTerm}` : "";
-            const response = await axios.get(`/api/products${query}`);
+            const response = await axios.get(`https://easycart-u08y.onrender.com/api/products${query}`);
             setProducts(response.data);
         }
         fetchProducts();

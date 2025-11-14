@@ -9,7 +9,7 @@ export function OrderDetailsGrid({ order, loadCart }) {
         let quantity = 0;
         const addToCart = async () => {
             quantity = quantity + 1;
-            await axios.post('/api/cart-items', {
+            await axios.post('https://easycart-u08y.onrender.com/api/cart-items', {
                 productId: product.productId,
                 quantity: quantity
             })

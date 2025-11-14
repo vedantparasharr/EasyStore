@@ -13,7 +13,7 @@ function App() {
   const [cart, setCart] = useState([]);
   window.axios = axios;
   const loadCart = async function fetchProducts() {
-      const cartData = await axios.get('/api/cart-items?expand=product');
+      const cartData = await axios.get('https://easycart-u08y.onrender.com/api/cart-items?expand=product');
       setCart(cartData.data);
     }
 

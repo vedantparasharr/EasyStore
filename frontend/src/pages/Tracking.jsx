@@ -15,7 +15,7 @@ export function Tracking({ cart }) {
 
     useEffect(() => {
         async function fetchProduct() {
-            const response = await axios.get(`/api/orders/${orderId}?expand=products`)
+            const response = await axios.get(`https://easycart-u08y.onrender.com/api/orders/${orderId}?expand=products`)
             const orderData = response.data;
             setOrder(orderData);
             const foundProduct = orderData.products.find((p) => p.productId === productId);

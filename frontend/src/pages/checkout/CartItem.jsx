@@ -12,7 +12,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
 
 
     const updateQuantity = async () => {
-        await axios.put(`/api/cart-items/${productId}`, {
+        await axios.put(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
             quantity: newQuantity
         });
 
@@ -22,7 +22,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
 
 
     const deleteProduct = async () => {
-        await axios.delete(`/api/cart-items/${productId}`, {
+        await axios.delete(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
             productId: productId,
             quantity
         })
@@ -31,7 +31,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
 
     useEffect(() => {
         async function getDeliveryOptions() {
-            const response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+            const response = await axios.get('https://easycart-u08y.onrender.com/api/delivery-options?expand=estimatedDeliveryTime');
             setDeliveryOptions(response.data)
         }
         getDeliveryOptions();

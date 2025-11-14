@@ -8,7 +8,7 @@ export function DeliveryOptions({ deliveryOptions, productId, deliveryOptionId, 
     return deliveryOptions.map((deliveryOption) => {
 
         const updateDeliveryOption = async () => {
-            await axios.put(`/api/cart-items/${productId}`, {
+            await axios.put(`https://easycart-u08y.onrender.com/api/cart-items/${productId}`, {
                 deliveryOptionId: deliveryOption.id
             });
             loadCart();

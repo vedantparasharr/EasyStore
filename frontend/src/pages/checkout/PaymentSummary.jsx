@@ -8,7 +8,7 @@ export function PaymentSummary({ cart, loadCart }) {
     const [paymentSummary, setPaymentSummary] = useState(null);
     useEffect(() => {
         async function fetchPaymentSummary() {
-            const response = await axios.get('/api/payment-summary')
+            const response = await axios.get('https://easycart-u08y.onrender.com/api/payment-summary')
             setPaymentSummary(response.data)
         }
         fetchPaymentSummary();

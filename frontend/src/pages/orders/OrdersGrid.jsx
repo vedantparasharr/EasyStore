@@ -12,7 +12,7 @@ export function OrdersGrid({loadCart}) {
 
     useEffect(() => {
         async function fetchOrders() {
-            const response = await axios.get('/api/orders?expand=products')
+            const response = await axios.get('https://easycart-u08y.onrender.com/api/orders?expand=products')
             setOrders(response.data)
             console.log(response)
         }
