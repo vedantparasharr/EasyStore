@@ -191,4 +191,4 @@ If you like this project, please give it a ⭐ on [GitHub](https://github.com/ve
 
 ---
 
-**Made with ❤️ by Vedant Parashar**
+**Made with ❤️ by Vedant**
