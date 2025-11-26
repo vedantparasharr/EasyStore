@@ -20,7 +20,7 @@
     "mysql2": "^3.14.1",
     "patch-package": "8.0.0",
     "pg": "^8.16.0",
-    "sequelize": "^6.6.5",
+    "sequelize": "^6.6.5"
   },
   "devDependencies": {
     "archiver": "^7.0.1",
@@ -28,4 +28,3 @@
     "nodemon": "^3.1.9"
   }
 }
-
