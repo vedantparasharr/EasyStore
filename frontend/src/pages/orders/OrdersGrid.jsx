@@ -14,7 +14,6 @@ export function OrdersGrid({ loadCart }) {
         async function fetchOrders() {
             const response = await axios.get(`${API_URL}/api/orders?expand=products`);
             setOrders(response.data);
-            console.log(response);
         }
         fetchOrders();
     }, []);
