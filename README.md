@@ -1,194 +1,180 @@
-# EasyStore 🛒
+# EasyStore
 
-A complete full-stack ecommerce application built with React, Node.js, Express, Sequelize, and PostgreSQL. Features real-time cart management, delivery options, order creation, and live order tracking.
+A full-stack ecommerce app with a React + Vite frontend and an Express + MongoDB backend.
 
-![EasyStore Banner](https://img.shields.io/badge/Status-Live-success) ![License](https://img.shields.io/badge/License-MIT-blue) ![React](https://img.shields.io/badge/React-18+-61DAFB?logo=react) ![Node](https://img.shields.io/badge/Node.js-16+-339933?logo=node.js)
+## Live Links
 
----
+- Frontend: https://easycartreact.vercel.app
+- Backend example endpoint: https://easycart-u08y.onrender.com/api/products
 
-## 🌐 Live Demo
+## Features
 
-- **Frontend:** [https://easycartreact.vercel.app](https://easycartreact.vercel.app)
-- **Backend API:** [https://easycart-u08y.onrender.com/api/products](https://easycart-u08y.onrender.com/api/products)
+- Product listing with keyword search
+- Cart management (add, update quantity, remove)
+- Delivery option selection per cart item
+- Payment summary calculation (subtotal, shipping, tax, total)
+- Order placement from cart
+- Orders history and per-order details
+- Tracking page by order + product
+- Reset endpoint for quickly reseeding demo data
 
----
-
-## 👨‍💻 Author
-
-**Vedant Parashar**
-
-- GitHub: [@vedantparasharr](https://github.com/vedantparasharr)
-- LinkedIn: [vedantparasharr](https://www.linkedin.com/in/vedantparasharr)
-- Email: iemavedant@gmail.com
-
----
-
-## ✨ Features
-
-- 🏠 **Home page** with complete product catalog
-- 🛒 **Cart management** - add items, update quantities, remove products
-- 🚚 **Multiple delivery options** for flexible shipping
-- 💳 **Checkout page** with complete order summary
-- 📦 **Order generation** and confirmation
-- 📋 **Orders page** to view past purchases
-- 📍 **Live delivery tracking** with animated progress bar
-- 📱 **Fully responsive** mobile design
-- 🗄️ **Real backend** with PostgreSQL database
-- ☁️ **Production ready** and fully deployed
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
-- **React** - UI library
-- **React Router** - Client-side routing
-- **Axios** - HTTP requests
-- **Vercel** - Deployment platform
+
+- React 19
+- React Router 7
+- Axios
+- Vite
 
 ### Backend
-- **Node.js** - Runtime environment
-- **Express** - Web framework
-- **Sequelize ORM** - Database management
-- **PostgreSQL** - Relational database (hosted on Render)
-- **Render** - Backend deployment
 
----
+- Node.js + Express
+- MongoDB + Mongoose
+- UUID
+- CORS + dotenv
 
-## Screenshots
+## Monorepo Structure
 
-### Home Page
-<img src="https://easycartreact.vercel.app/screenshots/s1.png" width="700" />
-
-### Checkout Page
-<img src="https://easycartreact.vercel.app/screenshots/s2.png" width="700" />
-
-### Orders Page
-<img src="https://easycartreact.vercel.app/screenshots/s3.png" width="700" />
-
-### Tracking Page
-<img src="https://easycartreact.vercel.app/screenshots/s4.png" width="700" />
-
----
-
-## 📁 Project Structure
-
-```
-EasyCart/
-├── backend/          # Express API & database logic
-└── frontend/         # React application
+```text
+.
+├── backend/    # Express API, MongoDB models, seeding
+└── frontend/   # React app (Vite)
 ```
 
----
+## Prerequisites
 
-## 🚀 Run Locally
+- Node.js 20+ (recommended for current Vite toolchain)
+- npm
+- MongoDB (local or hosted)
 
-### Prerequisites
-- Node.js (v16+)
-- PostgreSQL
-- Git
+## Local Development
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/vedantparasharr/EasyCart.git
-cd EasyCart
-```
-
----
-
-### 2. Backend Setup
+### 1) Install dependencies
 
 ```bash
 cd backend
 npm install
-```
 
-Create a `.env` file in the `backend` directory:
-
-```env
-DB_TYPE=postgres
-RDS_HOSTNAME=your_render_hostname
-RDS_USERNAME=your_username
-RDS_PASSWORD=your_password
-RDS_DB_NAME=your_db_name
-RDS_PORT=5432
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-Backend will run on `http://localhost:5000`
-
----
-
-### 3. Frontend Setup
-
-```bash
-cd frontend
+cd ../frontend
 npm install
 ```
 
-Create a `.env` file in the `frontend` directory:
+### 2) Configure environment variables
+
+Create `backend/.env`:
 
 ```env
-VITE_API_URL=https://easycart-u08y.onrender.com
+MONGODB_URI=mongodb://127.0.0.1:27017/easystore
+PORT=3000
+NODE_ENV=development
 ```
 
-For local development, use:
+Create `frontend/.env`:
+
 ```env
-VITE_API_URL=http://localhost:5000
+VITE_API_URL=http://localhost:3000
 ```
 
-Start the development server:
+### 3) Run backend
 
 ```bash
+cd backend
 npm run dev
 ```
 
-Frontend will run on `http://localhost:5173`
+Backend starts on `http://localhost:3000` by default.
 
----
+### 4) Run frontend
 
-## 🌍 Deployment
+```bash
+cd frontend
+npm run dev
+```
 
-### Frontend (Vercel)
+Frontend starts on `http://localhost:5173` by default.
 
-1. Connect your GitHub repository to Vercel
-2. Select the `frontend` folder as the root directory
-3. Add environment variable: `VITE_API_URL`
-4. Click **Deploy**
+## Available Scripts
 
-### Backend (Render)
+### Backend (`backend/package.json`)
 
-1. Create a new Web Service on Render
-2. Connect your GitHub repository
-3. Set root directory to `backend`
-4. Add all environment variables from `.env`
-5. Set start command: `node server.js`
-6. Click **Deploy**
+- `npm run dev` - run with nodemon
+- `npm start` - run with node
+- `npm run zip` - create image zip using `zipFiles.js`
 
----
+### Frontend (`frontend/package.json`)
 
-## 📄 License
+- `npm run dev` - start Vite dev server
+- `npm run build` - production build
+- `npm run preview` - preview production build
+- `npm run lint` - run ESLint
 
-This project is open source and available under the [MIT License](LICENSE).
+## Backend API Overview
 
----
+Base URL: `http://localhost:3000`
 
-## 🤝 Contributing
+### Products
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/vedantparasharr/EasyCart/issues).
+- `GET /api/products`
+- `GET /api/products?search=shirt`
 
----
+### Delivery Options
 
-## ⭐ Show Your Support
+- `GET /api/delivery-options`
+- `GET /api/delivery-options?expand=estimatedDeliveryTime`
 
-If you like this project, please give it a ⭐ on [GitHub](https://github.com/vedantparasharr/EasyCart)!
+### Cart Items
 
----
+- `GET /api/cart-items`
+- `GET /api/cart-items?expand=product`
+- `POST /api/cart-items`
+	- body: `{ "productId": "...", "quantity": 1 }`
+- `PUT /api/cart-items/:productId`
+	- body: `{ "quantity": 2, "deliveryOptionId": "2" }`
+- `DELETE /api/cart-items/:productId`
 
-**Made with ❤️ by Vedant**
+### Payment Summary
+
+- `GET /api/payment-summary`
+
+### Orders
+
+- `GET /api/orders`
+- `GET /api/orders?expand=products`
+- `GET /api/orders/:orderId`
+- `GET /api/orders/:orderId?expand=products`
+- `POST /api/orders`
+
+### Reset Seed Data
+
+- `POST /api/reset`
+
+## Static Assets
+
+Backend serves product/rating/icon images from:
+
+- `GET /images/...`
+
+## Notes
+
+- On server startup, backend seeds default products and delivery options only if those collections are empty.
+- Frontend requests depend on `VITE_API_URL`. Ensure it points to your backend origin.
+- In `frontend/vite.config.js`, `/api` and `/images` are proxied to `http://localhost:3000` during dev.
+
+## Screenshots
+
+- Home
+
+	<img src="https://easycartreact.vercel.app/screenshots/s1.png" width="700" />
+
+- Checkout
+
+	<img src="https://easycartreact.vercel.app/screenshots/s2.png" width="700" />
+
+- Orders
+
+	<img src="https://easycartreact.vercel.app/screenshots/s3.png" width="700" />
+
+- Tracking
+
+	<img src="https://easycartreact.vercel.app/screenshots/s4.png" width="700" />
