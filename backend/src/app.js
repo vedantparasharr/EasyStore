@@ -18,8 +18,9 @@ export function createApp() {
 
   app.use(
     cors({
-      origin: "http://localhost:5174",
-    }),
+      origin: "http://localhost:5173",
+      "https://easystoreapp.vercel.app"
+    })
   );
   app.use(express.json());
 
