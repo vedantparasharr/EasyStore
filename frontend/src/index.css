@@ -1,105 +1,102 @@
-body {
-  font-family: Roboto, Arial;
-  color: rgb(33, 33, 33);
-  /* The <body> element has a default margin of 8px
-     on all sides. This removes the default margins. */
-  margin: 0;
+@import "tailwindcss";
+
+@theme {
+  /* === Emerald Obsidian Design System (Stitch MCP) === */
+
+  /* Surface Hierarchy */
+  --color-surface: #131314;
+  --color-surface-dim: #131314;
+  --color-surface-bright: #3a393a;
+  --color-surface-lowest: #0e0e0f;
+  --color-surface-low: #1c1b1c;
+  --color-surface-container: #201f20;
+  --color-surface-high: #2a2a2b;
+  --color-surface-highest: #353436;
+  --color-surface-variant: #353436;
+
+  /* Primary (Emerald) */
+  --color-primary: #4edea3;
+  --color-primary-container: #10b981;
+  --color-primary-fixed: #6ffbbe;
+  --color-primary-fixed-dim: #4edea3;
+  --color-on-primary: #003824;
+  --color-on-primary-container: #00422b;
+
+  /* Secondary */
+  --color-secondary: #c8c5ca;
+  --color-secondary-container: #47464a;
+  --color-on-secondary: #303033;
+
+  /* Tertiary */
+  --color-tertiary: #ffb3af;
+  --color-tertiary-container: #fc7c78;
+
+  /* Surface Text */
+  --color-on-surface: #e5e2e3;
+  --color-on-surface-variant: #bbcabf;
+
+  /* Outline */
+  --color-outline: #86948a;
+  --color-outline-variant: #3c4a42;
+
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error: #690005;
+
+  /* Inverse */
+  --color-inverse-surface: #e5e2e3;
+  --color-inverse-on-surface: #313031;
+  --color-inverse-primary: #006c49;
+
+  /* Surface Tint */
+  --color-surface-tint: #4edea3;
+
+  /* Font Families */
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
-/* Remove the default margins of <p> elements. */
+/* === Base Styles === */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 p {
   margin: 0;
 }
 
-button {
-  font-size: 14px;
-  cursor: pointer;
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-select {
-  cursor: pointer;
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
 }
 
-input, select, button {
-  font-family: Roboto, Arial;
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-highest);
+  border-radius: 4px;
 }
 
-.button-primary {
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 135, 84);
-  border: 1px solid transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(220, 220, 220, 0.5);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
 }
 
-.button-primary:hover {
-  background-color: rgba(25, 135, 84, 0.75);
-  border: 1px solid transparent;
-}
-
-.button-primary:active {
-  background: rgba(25, 135, 84, 0.5);
-  border-color: transparent;
-  box-shadow: none;
-}
-
-.button-secondary {
-  color: rgb(33, 33, 33);
-  background: white;
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(220, 220, 220, 0.2);
-}
-
-.button-secondary:hover {
-  background-color: rgb(250, 250, 250);
-}
-
-.button-secondary:active {
-  background-color: rgb(240, 240, 240);
-  box-shadow: none;
-}
-
-/* These styles will limit text to 2 lines. Anything
-   beyond 2 lines will be replaced with "..."
-   You can find this code by using an A.I. tool or by
-   searching in Google.
-   https://css-tricks.com/almanac/properties/l/line-clamp/ */
-.limit-text-to-2-lines {
+/* Text line clamping utility */
+.line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.link-primary {
-  color: rgb(25, 135, 84);
-  cursor: pointer;
-}
-
-.link-primary:hover {
-  opacity: 0.75;
-}
-
-.link-primary:active {
-  opacity: 0.5;
-}
-
-/* Styles for dropdown selectors. */
-select {
-  color: rgb(33, 33, 33);
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 5px;
-  padding: 3px 5px;
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(200, 200, 200, 0.2);
-}
-
-select:focus,
-input:focus {
-  outline: 2px solid rgb(25, 135, 84);
 }

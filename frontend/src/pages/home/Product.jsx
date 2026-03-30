@@ -27,49 +27,69 @@ export function Product({ id, image, name, ratingStars, ratingCount, priceCents,
     };
 
     return (
-        <div className="product-container" data-id={id}>
-            <div className="product-image-container">
+        <div
+            className="group bg-surface-container rounded-2xl p-5 flex flex-col transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:bg-surface-high hover:scale-[1.02] hover:shadow-[0_20px_40px_rgba(71,70,74,0.08)]"
+            data-id={id}
+        >
+            {/* Product Image */}
+            <div className="flex items-center justify-center h-44 mb-5 rounded-xl bg-surface-low/50 p-3">
                 <img
-                    className="product-image"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-105"
                     src={`${API_URL}/${image}`}
+                    alt={name}
                 />
             </div>
 
-            <div className="product-name limit-text-to-2-lines">
+            {/* Product Name */}
+            <div className="font-body text-sm text-on-surface line-clamp-2 h-10 mb-2">
                 {name}
             </div>
 
-            <div className="product-rating-container">
+            {/* Rating */}
+            <div className="flex items-center gap-1.5 mb-3">
                 <img
-                    className="product-rating-stars"
+                    className="w-24"
                     src={`${API_URL}/images/ratings/rating-${ratingStars * 10}.png`}
+                    alt={`${ratingStars} stars`}
                 />
-                <div className="product-rating-count link-primary">
+                <span className="text-xs text-primary-fixed-dim mt-0.5">
                     {ratingCount}
-                </div>
+                </span>
             </div>
 
-            <div className="product-price">
+            {/* Price */}
+            <div className="font-headline text-lg font-bold text-on-surface tracking-tight mb-3">
                 {formatMoney(priceCents)}
             </div>
 
-            <div className="product-quantity-container">
-                <select value={quantity} onChange={selectQuantity}>
+            {/* Quantity Selector */}
+            <div className="mb-4">
+                <select
+                    value={quantity}
+                    onChange={selectQuantity}
+                    className="bg-surface-lowest text-on-surface text-sm border border-outline-variant/15 rounded-lg px-3 py-1.5 cursor-pointer focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(78,222,163,0.15)] transition-all duration-200 appearance-auto"
+                >
                     {Array.from({ length: 10 }, (_, i) => (
                         <option key={i} value={i + 1}>{i + 1}</option>
                     ))}
                 </select>
             </div>
 
-            <div className="product-spacer" />
+            {/* Spacer */}
+            <div className="flex-1" />
 
-            <div className="added-to-cart" style={{ opacity: added ? 1 : 0 }}>
-                <img src={`${API_URL}/images/icons/checkmark.png`} />
+            {/* Added to Cart Message */}
+            <div
+                className="flex items-center gap-1.5 mb-2 text-sm text-primary transition-opacity duration-300"
+                style={{ opacity: added ? 1 : 0 }}
+            >
+                <img className="h-4.5" src={`${API_URL}/images/icons/checkmark.png`} alt="" />
                 Added
             </div>
 
+            {/* Add to Cart Button */}
             <button
-                className="add-to-cart-button button-primary"
+                className="w-full py-2.5 bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold text-sm rounded-lg cursor-pointer hover:brightness-110 hover:shadow-[0_4px_16px_rgba(78,222,163,0.25)] active:brightness-95 transition-all duration-200"
                 onClick={addToCart}
             >
                 Add to Cart

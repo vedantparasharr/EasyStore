@@ -1,4 +1,3 @@
-import './Checkout.css'
 import { PaymentSummary } from './PaymentSummary';
 import { CartItemsGrid } from './CartItemsGrid'
 import { CheckoutHeader } from './CheckoutHeader';
@@ -11,19 +10,21 @@ export function Checkout({ cart, loadCart }) {
 
       <CheckoutHeader cart={cart} />
 
-      <div className="checkout-page">
-        <div className="page-title">Review your order</div>
+      <main className="max-w-[1100px] mx-auto px-6 pt-28 pb-24">
+        <h1 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-6">
+          Review your order
+        </h1>
 
-        <div className="checkout-grid">
-          <div className="order-summary">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-5 items-start">
+          <div className="space-y-4">
             <CartItemsGrid cart={cart} loadCart={loadCart} />
           </div>
 
-          <div className="payment-summary">
+          <div className="lg:sticky lg:top-24 bg-surface-container rounded-2xl p-6">
             <PaymentSummary cart={cart} loadCart={loadCart} />
           </div>
         </div>
-      </div>
+      </main>
     </>
   )
 }

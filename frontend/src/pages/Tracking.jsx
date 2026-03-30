@@ -2,7 +2,6 @@ import { Header } from '../components/Header';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './Tracking.css';
 import dayjs from 'dayjs';
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -60,46 +59,50 @@ export function Tracking({ cart }) {
                 <title>Tracking</title>
                 <Header cart={cart} />
 
-                <div className="tracking-page">
-                    <div className="order-tracking">
+                <main className="max-w-[850px] mx-auto px-6 pt-24 pb-24">
+                    <div className="bg-surface-container rounded-2xl p-8">
                         <Link
-                            className="back-to-orders-link link-primary"
+                            className="inline-flex items-center text-primary text-sm font-medium no-underline hover:text-primary-fixed transition-colors duration-200 mb-8"
                             to="/orders"
                         >
-                            View all orders
+                            ← View all orders
                         </Link>
 
-                        <div className="delivery-date">
+                        {/* Delivery Date */}
+                        <h1 className="font-headline text-2xl font-bold tracking-tight text-on-surface mb-3">
                             Arriving on{' '}
                             {dayjs(product.estimatedDeliveryTimeMs).format(
                                 'dddd, MMMM DD'
                             )}
-                        </div>
+                        </h1>
 
-                        <div className="product-info">
+                        {/* Product Info */}
+                        <p className="text-on-surface-variant mb-1">
                             {product.product.name}
-                        </div>
+                        </p>
 
-                        <div className="product-info">
+                        <p className="text-on-surface-variant mb-6">
                             Quantity: {product.quantity}
-                        </div>
+                        </p>
 
+                        {/* Product Image */}
                         <img
-                            className="product-image"
+                            className="max-w-[150px] max-h-[150px] rounded-xl mb-10"
                             src={`${API_URL}/${product.product.image}`}
+                            alt={product.product.name}
                         />
 
-                        <div className="progress-labels-container">
-                            <div className="progress-label">Preparing</div>
-                            <div className="progress-label current-status">
-                                Shipped
-                            </div>
-                            <div className="progress-label">Delivered</div>
+                        {/* Progress Labels */}
+                        <div className="flex justify-between text-base font-medium mb-4 max-sm:flex-col max-sm:gap-1 max-sm:mb-2">
+                            <span className="text-on-surface-variant">Preparing</span>
+                            <span className="text-primary font-semibold">Shipped</span>
+                            <span className="text-on-surface-variant">Delivered</span>
                         </div>
 
-                        <div className="progress-bar-container">
+                        {/* Progress Bar */}
+                        <div className="h-3 w-full bg-surface-low rounded-full overflow-hidden mb-3">
                             <div
-                                className="progress-bar"
+                                className="h-full bg-gradient-to-r from-primary to-primary-container rounded-full"
                                 style={{
                                     width: `${deliveryPercent}%`,
                                     transition: 'width 0.8s ease-in-out',
@@ -107,11 +110,11 @@ export function Tracking({ cart }) {
                             ></div>
                         </div>
 
-                        <p className="progress-percent">
-                            {Math.round(deliveryPercent)}% delivered
+                        <p className="text-sm text-on-surface-variant">
+                            <span className="text-primary font-semibold">{Math.round(deliveryPercent)}%</span> delivered
                         </p>
                     </div>
-                </div>
+                </main>
             </>
         )
     );

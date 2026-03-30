@@ -44,37 +44,42 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
     return (
         <>
             {deliveryOptions.length > 0 && selectedDeliveryOption && (
-                <div className="cart-item-container">
-                    <div className="delivery-date">
+                <div className="bg-surface-container rounded-2xl p-5 transition-colors duration-200">
+                    {/* Delivery Date */}
+                    <div className="text-primary font-headline font-bold text-lg mb-5">
                         Delivery date:{' '}
                         {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
                     </div>
 
-                    <div className="cart-item-details-grid">
+                    {/* Cart Item Details Grid */}
+                    <div className="grid grid-cols-[100px_1fr_1fr] max-lg:grid-cols-[100px_1fr] gap-x-6 gap-y-7">
+                        {/* Product Image */}
                         <img
-                            className="product-image"
+                            className="max-w-full max-h-[120px] mx-auto rounded-lg"
                             src={`${API_URL}/${item.product.image}`}
+                            alt={item.product.name}
                         />
 
-                        <div className="cart-item-details">
-                            <div className="product-name">
+                        {/* Product Details */}
+                        <div>
+                            <div className="font-headline font-bold text-on-surface mb-2 tracking-tight">
                                 {item.product.name}
                             </div>
 
-                            <div className="product-price">
+                            <div className="font-headline font-bold text-primary text-lg mb-1.5">
                                 {formatMoney(item.product.priceCents)}
                             </div>
 
-                            <div className="product-quantity">
+                            <div className="flex items-center flex-wrap gap-1 text-sm text-on-surface-variant">
                                 {!editing && (
                                     <>
                                         <span>
                                             Quantity:{' '}
-                                            <span className="quantity-label">{quantity}</span>
+                                            <span className="font-semibold text-on-surface">{quantity}</span>
                                         </span>
 
                                         <span
-                                            className="update-quantity-link link-primary"
+                                            className="text-primary cursor-pointer hover:text-primary-fixed transition-colors duration-200 ml-1"
                                             onClick={() => setEditing(true)}
                                         >
                                             Update
@@ -83,26 +88,25 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                                 )}
 
                                 {editing && (
-                                    <span className="update-quantity-edit">
+                                    <span className="flex items-center gap-2">
                                         <input
                                             type="number"
                                             min="1"
                                             value={newQuantity}
                                             onChange={(e) => setNewQuantity(Number(e.target.value))}
-                                            style={{ width: "50px", padding: "4px" }}
+                                            className="w-14 px-2 py-1 bg-surface-lowest text-on-surface rounded-lg border border-outline-variant/15 focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(78,222,163,0.15)] transition-all duration-200 text-sm"
                                         />
 
                                         <span
-                                            className="save-quantity-link link-primary"
+                                            className="text-primary cursor-pointer hover:text-primary-fixed transition-colors duration-200"
                                             onClick={updateQuantity}
                                         >
                                             Save
                                         </span>
 
                                         <span
-                                            className="cancel-quantity-link link-primary"
+                                            className="text-on-surface-variant cursor-pointer hover:text-on-surface transition-colors duration-200"
                                             onClick={() => setEditing(false)}
-                                            style={{ marginRight: '4px' }}
                                         >
                                             Cancel
                                         </span>
@@ -110,7 +114,7 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                                 )}
 
                                 <span
-                                    className="delete-quantity-link link-primary"
+                                    className="text-error cursor-pointer hover:text-tertiary transition-colors duration-200 ml-1"
                                     onClick={deleteProduct}
                                 >
                                     Delete
@@ -118,8 +122,9 @@ export function CartItem({ item, productId, quantity, deliveryOptionId, loadCart
                             </div>
                         </div>
 
-                        <div className="delivery-options">
-                            <div className="delivery-options-title">
+                        {/* Delivery Options */}
+                        <div className="max-lg:col-span-2">
+                            <div className="font-headline font-semibold text-on-surface text-sm mb-3 tracking-tight">
                                 Choose a delivery option:
                             </div>
                             <DeliveryOptions

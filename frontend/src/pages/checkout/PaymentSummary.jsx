@@ -27,47 +27,43 @@ export function PaymentSummary({ cart, loadCart }) {
 
     return paymentSummary && (
         <>
-            <div className="payment-summary-title">
+            <h2 className="font-headline text-lg font-bold tracking-tight text-on-surface mb-4">
                 Payment Summary
-            </div>
+            </h2>
 
-            <div className="payment-summary-row">
-                <div>Items ({paymentSummary.totalItems}):</div>
-                <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.productCostCents)}
+            <div className="space-y-2.5 text-sm">
+                <div className="flex justify-between">
+                    <span className="text-on-surface-variant">Items ({paymentSummary.totalItems}):</span>
+                    <span className="text-on-surface font-medium">{formatMoney(paymentSummary.productCostCents)}</span>
                 </div>
-            </div>
 
-            <div className="payment-summary-row">
-                <div>Shipping &amp; handling:</div>
-                <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.shippingCostCents)}
+                <div className="flex justify-between">
+                    <span className="text-on-surface-variant">Shipping &amp; handling:</span>
+                    <span className="text-on-surface font-medium">{formatMoney(paymentSummary.shippingCostCents)}</span>
                 </div>
-            </div>
 
-            <div className="payment-summary-row subtotal-row">
-                <div>Total before tax:</div>
-                <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.totalCostBeforeTaxCents)}
+                <div className="pt-3 border-t border-outline-variant/15">
+                    <div className="flex justify-between">
+                        <span className="text-on-surface-variant">Total before tax:</span>
+                        <span className="text-on-surface font-medium">{formatMoney(paymentSummary.totalCostBeforeTaxCents)}</span>
+                    </div>
                 </div>
-            </div>
 
-            <div className="payment-summary-row">
-                <div>Estimated tax (10%):</div>
-                <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.taxCents)}
+                <div className="flex justify-between">
+                    <span className="text-on-surface-variant">Estimated tax (10%):</span>
+                    <span className="text-on-surface font-medium">{formatMoney(paymentSummary.taxCents)}</span>
                 </div>
-            </div>
 
-            <div className="payment-summary-row total-row">
-                <div>Order total:</div>
-                <div className="payment-summary-money">
-                    {formatMoney(paymentSummary.totalCostCents)}
+                <div className="pt-4 border-t border-outline-variant/15">
+                    <div className="flex justify-between">
+                        <span className="text-primary font-headline font-bold text-lg">Order total:</span>
+                        <span className="text-primary font-headline font-bold text-lg">{formatMoney(paymentSummary.totalCostCents)}</span>
+                    </div>
                 </div>
             </div>
 
             <button
-                className="place-order-button button-primary"
+                className="w-full py-3.5 mt-6 mb-2 bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold text-sm rounded-xl cursor-pointer hover:brightness-110 hover:shadow-[0_4px_16px_rgba(78,222,163,0.25)] active:brightness-95 transition-all duration-200"
                 onClick={createOrder}
             >
                 Place your order
